@@ -1,0 +1,75 @@
+{
+  "name": "awge-retro-theme",
+  "version": "1.0.0",
+  "description": "A retro TV-inspired Ghost theme based on AWGE design with Tech and Fashion categories",
+  "engines": {
+    "ghost": ">=4.0.0"
+  },
+  "author": {
+    "name": "Manus AI",
+    "email": "support@example.com",
+    "url": "https://example.com"
+  },
+  "keywords": [
+    "ghost-theme",
+    "retro",
+    "gaming",
+    "tech",
+    "fashion"
+  ],
+  "config": {
+    "posts_per_page": 6,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    },
+    "custom": {
+      "site_logo_text": {
+        "type": "text",
+        "default": "RETRO"
+      },
+      "primary_color": {
+        "type": "color",
+        "default": "#00ff00"
+      },
+      "tech_color": {
+        "type": "color",
+        "default": "#3498db"
+      },
+      "fashion_color": {
+        "type": "color",
+        "default": "#e84393"
+      },
+      "show_crt_effect": {
+        "type": "boolean",
+        "default": true
+      },
+      "header_style": {
+        "type": "select",
+        "options": ["default", "minimal", "expanded"],
+        "default": "default"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "gulp",
+    "test": "gscan ."
+  },
+  "license": "MIT"
+}

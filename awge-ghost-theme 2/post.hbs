@@ -1,0 +1,112 @@
+{{!< default}}
+
+{{!-- The post page --}}
+<div class="container">
+    <div class="screen">
+        <div class="screen-content post-screen static-bg">
+            <div class="post-header">
+                <div class="post-back-button" id="post-back-button">BACK</div>
+                <div class="post-title">{{title}}</div>
+            </div>
+            
+            <div class="post-content-wrapper">
+                <article class="post-content {{post_class}}">
+                    {{!-- Featured Image --}}
+                    {{#if feature_image}}
+                    <figure class="post-feature-image">
+                        <img src="{{feature_image}}" alt="{{title}}" />
+                    </figure>
+                    {{/if}}
+                    
+                    {{!-- Post Meta --}}
+                    <div class="post-meta">
+                        <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                        {{#primary_tag}}
+                        <span class="post-primary-tag">{{name}}</span>
+                        {{/primary_tag}}
+                        {{#if reading_time}}
+                        <span class="post-reading-time">{{reading_time}}</span>
+                        {{/if}}
+                    </div>
+                    
+                    {{!-- Post Content --}}
+                    <section class="post-full-content">
+                        <div class="post-content-inner kg-canvas">
+                            {{content}}
+                        </div>
+                    </section>
+                    
+                    {{!-- Tags --}}
+                    {{#if tags}}
+                    <div class="post-tags">
+                        {{#foreach tags}}
+                        <a href="{{url}}" class="post-tag">{{name}}</a>
+                        {{/foreach}}
+                    </div>
+                    {{/if}}
+                    
+                    {{!-- Author Info --}}
+                    {{#primary_author}}
+                    <div class="post-author">
+                        {{#if profile_image}}
+                        <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
+                        {{/if}}
+                        <div class="author-info">
+                            <h4 class="author-name">{{name}}</h4>
+                            {{#if bio}}
+                            <p class="author-bio">{{bio}}</p>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/primary_author}}
+                    
+                    {{!-- Related Posts --}}
+                    {{#get "posts" filter="tags:[{{primary_tag.slug}}]+id:-{{id}}" limit="3" as |related|}}
+                    {{#if related}}
+                    <div class="related-posts">
+                        <h3 class="related-posts-title">Related Posts</h3>
+                        <div class="related-posts-grid">
+                            {{#foreach related}}
+                            <a class="related-post" href="{{url}}">
+                                {{#if feature_image}}
+                                <div class="related-post-image" style="background-image: url({{feature_image}})"></div>
+                                {{/if}}
+                                <h4 class="related-post-title">{{title}}</h4>
+                            </a>
+                            {{/foreach}}
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{/get}}
+                    
+                    {{!-- Next/Prev Post Navigation --}}
+                    <div class="post-navigation">
+                        {{#next_post}}
+                        <a class="post-nav-next" href="{{url}}">
+                            <span class="post-nav-label">Next</span>
+                            <h4 class="post-nav-title">{{title}}</h4>
+                        </a>
+                        {{/next_post}}
+                        {{#prev_post}}
+                        <a class="post-nav-prev" href="{{url}}">
+                            <span class="post-nav-label">Previous</span>
+                            <h4 class="post-nav-title">{{title}}</h4>
+                        </a>
+                        {{/prev_post}}
+                    </div>
+                </article>
+            </div>
+            
+            <div class="footer">
+                <div class="copyright">© {{date format="YYYY"}} {{@site.title}}</div>
+                <div class="footer-links">
+                    <a href="{{@site.url}}/terms" class="footer-link">Terms and Conditions</a>
+                    <a href="{{@site.url}}/privacy" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Ghost outputs important scripts and data with this tag --}}
+{{ghost_foot}}

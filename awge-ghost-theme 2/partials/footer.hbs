@@ -1,0 +1,10 @@
+<div class="site-footer">
+    <div class="site-footer-content">
+        <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+        <nav class="site-footer-nav">
+            {{#if @site.secondary_navigation}}
+                {{navigation type="secondary"}}
+            {{/if}}
+        </nav>
+    </div>
+</div>

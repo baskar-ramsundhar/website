@@ -1,0 +1,17 @@
+<div class="site-nav">
+    <div class="site-nav-left">
+        {{#if @site.logo}}
+            <a class="site-nav-logo" href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
+        {{else}}
+            <a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
+        {{/if}}
+        <div class="site-nav-content">
+            {{navigation}}
+        </div>
+    </div>
+    <div class="site-nav-right">
+        {{#if @site.secondary_navigation}}
+            {{navigation type="secondary"}}
+        {{/if}}
+    </div>
+</div>

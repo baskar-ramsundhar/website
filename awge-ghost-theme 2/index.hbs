@@ -1,0 +1,137 @@
+{{!< default}}
+
+{{!-- The main content area --}}
+<div class="container" style="{{#if @custom.primary_color}}--primary-color: {{@custom.primary_color}};{{/if}} {{#if @custom.tech_color}}--tech-color: {{@custom.tech_color}};{{/if}} {{#if @custom.fashion_color}}--fashion-color: {{@custom.fashion_color}};{{/if}}">
+    <div class="screen {{#if @custom.show_crt_effect}}crt-effect{{/if}}">
+        <div class="screen-content landing-screen static-bg" id="landing-screen">
+            <div class="logo">{{#if @custom.site_logo_text}}{{@custom.site_logo_text}}{{else}}{{@site.title}}{{/if}}</div>
+            <div class="start-button-container">
+                <button id="start-button">PRESS START</button>
+            </div>
+            <div class="copyright">© {{date format="YYYY"}} {{@site.title}}</div>
+        </div>
+        
+        <div class="screen-content main-screen static-bg hidden" id="main-screen">
+            <div class="header {{#if @custom.header_style}}header-{{@custom.header_style}}{{/if}}">
+                <div class="logo-small" id="home-button">
+                    <div class="logo-icon"></div>
+                </div>
+            </div>
+            
+            <div class="menu-grid">
+                {{!-- Category 1: Tech --}}
+                <div class="menu-item" data-category="tech">
+                    <div class="menu-box blue-border">
+                        <div class="menu-icon">
+                            <div class="tech-icon"></div>
+                        </div>
+                        <div class="menu-label">TECH</div>
+                    </div>
+                </div>
+                
+                {{!-- Category 2: Fashion --}}
+                <div class="menu-item" data-category="fashion">
+                    <div class="menu-box pink-border">
+                        <div class="menu-icon">
+                            <div class="fashion-icon"></div>
+                        </div>
+                        <div class="menu-label">FASHION</div>
+                    </div>
+                </div>
+                
+                {{!-- Blog Posts --}}
+                <div class="menu-item" data-category="blog">
+                    <div class="menu-box green-border">
+                        <div class="menu-icon">
+                            <div class="blog-icon"></div>
+                        </div>
+                        <div class="menu-label">BLOG</div>
+                    </div>
+                </div>
+                
+                {{!-- Authors --}}
+                <div class="menu-item" data-category="authors">
+                    <div class="menu-box orange-border">
+                        <div class="menu-icon">
+                            <div class="authors-icon"></div>
+                        </div>
+                        <div class="menu-label">AUTHORS</div>
+                    </div>
+                </div>
+                
+                {{!-- About --}}
+                <div class="menu-item" data-category="about">
+                    <div class="menu-box red-border">
+                        <div class="menu-icon">
+                            <div class="about-icon"></div>
+                        </div>
+                        <div class="menu-label">ABOUT</div>
+                    </div>
+                </div>
+                
+                {{!-- Contact --}}
+                <div class="menu-item" data-category="contact">
+                    <div class="menu-box yellow-border">
+                        <div class="menu-icon">
+                            <div class="contact-icon"></div>
+                        </div>
+                        <div class="menu-label">CONTACT</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="copyright">© {{date format="YYYY"}} {{@site.title}}</div>
+                <div class="footer-links">
+                    <a href="{{@site.url}}/terms" class="footer-link">Terms and Conditions</a>
+                    <a href="{{@site.url}}/privacy" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Blog Posts Content --}}
+        <div class="screen-content blog-screen static-bg hidden" id="blog-screen">
+            <div class="category-header">
+                <div class="category-title">BLOG</div>
+                <div class="category-back-button" id="blog-back-button">BACK</div>
+            </div>
+            
+            <div class="post-grid">
+                {{#foreach posts}}
+                <article class="post-card {{post_class}}">
+                    <a class="post-card-link" href="{{url}}">
+                        <div class="post-card-content">
+                            <h2 class="post-card-title">{{title}}</h2>
+                            <div class="post-card-excerpt">{{excerpt words="33"}}</div>
+                            <div class="post-card-meta">
+                                <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                                {{#if primary_tag}}
+                                <span class="post-card-tag">{{primary_tag.name}}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{#if feature_image}}
+                        <div class="post-card-image" style="background-image: url({{feature_image}})"></div>
+                        {{/if}}
+                    </a>
+                </article>
+                {{/foreach}}
+            </div>
+            
+            <div class="pagination">
+                {{pagination}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- The template for displaying Ghost content --}}
+<div id="content-container" class="hidden">
+    <div class="content-area">
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+    </div>
+</div>
+
+{{!-- Ghost outputs important scripts and data with this tag --}}
+{{ghost_foot}}

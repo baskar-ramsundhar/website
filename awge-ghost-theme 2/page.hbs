@@ -1,0 +1,46 @@
+{{!< default}}
+
+{{!-- The page template --}}
+<div class="container">
+    <div class="screen">
+        <div class="screen-content page-screen static-bg">
+            <div class="page-header">
+                <div class="page-back-button" id="page-back-button">BACK</div>
+                {{#if @page.show_title_and_feature_image}}
+                <div class="page-title">{{title}}</div>
+                {{/if}}
+            </div>
+            
+            <div class="page-content-wrapper">
+                <article class="page-content {{post_class}}">
+                    {{!-- Featured Image --}}
+                    {{#if @page.show_title_and_feature_image}}
+                        {{#if feature_image}}
+                        <figure class="page-feature-image">
+                            <img src="{{feature_image}}" alt="{{title}}" />
+                        </figure>
+                        {{/if}}
+                    {{/if}}
+                    
+                    {{!-- Page Content --}}
+                    <section class="page-full-content">
+                        <div class="page-content-inner kg-canvas">
+                            {{content}}
+                        </div>
+                    </section>
+                </article>
+            </div>
+            
+            <div class="footer">
+                <div class="copyright">© {{date format="YYYY"}} {{@site.title}}</div>
+                <div class="footer-links">
+                    <a href="{{@site.url}}/terms" class="footer-link">Terms and Conditions</a>
+                    <a href="{{@site.url}}/privacy" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Ghost outputs important scripts and data with this tag --}}
+{{ghost_foot}}
