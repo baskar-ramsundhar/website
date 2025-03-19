@@ -1,1 +1,1 @@
-A experimental website hosted on AWS using LightSail, Route 66.
+A experimental website hosted on AWS using LightSail, Route 53.
